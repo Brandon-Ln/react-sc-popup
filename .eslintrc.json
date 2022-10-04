@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "func-style": ["warn", "declaration"],
+    "no-await-in-loop": "warn",
+    "no-duplicate-case": "error",
+    "no-use-before-define": "error",
+    "array-callback-return": "warn",
+    "quotes": ["warn", "single"],
+    "react/prop-types": "off",
+    "no-unmodified-loop-condition": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "max-depth": "warn",
+    "max-nested-callbacks": [
+      "warn",
+      {
+        "max": 5
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"] // use typescript-eslint parser for .ts|tsx files.
+    }
+  }
+}

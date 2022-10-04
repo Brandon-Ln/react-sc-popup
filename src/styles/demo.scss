@@ -1,0 +1,12 @@
+
+:root {
+  --theme: hotpink;
+}
+
+.demo {
+  color: var(--theme);
+
+  &:is(:first-child, :last-child){
+    margin: 10px;
+  }
+}

@@ -1,0 +1,3 @@
+# 对 git 提交的文件进行 lint 操作
+
+npx lint-staged 
