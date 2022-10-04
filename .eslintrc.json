@@ -30,6 +30,7 @@
     "no-unmodified-loop-condition": "error",
     "react-hooks/exhaustive-deps": "error",
     "max-depth": "warn",
+    "@typescript-eslint/no-non-null-assertion": 0,
     "max-nested-callbacks": [
       "warn",
       {
