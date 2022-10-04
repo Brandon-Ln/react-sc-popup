@@ -1,13 +1,17 @@
 {
   "name": "vite-react-web-lib-starter",
   "description": "unknown",
-  "author": "unknown<https://github.com/unknown>",
-  "private": true,
+  "author": "Brandon Leon<https://github.com/Brandon-Ln",
   "version": "0.0.0",
   "keywords": [
-    "unknown"
+    "React",
+    "component",
+    "popup",
+    "popper",
+    "modal",
+    "dialog"
   ],
-  "homepage": "unknown",
+  "homepage": "https://github.com/Brandon-Ln/react-ac-popup",
   "sideEffects": [],
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
