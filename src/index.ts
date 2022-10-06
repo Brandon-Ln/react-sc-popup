@@ -1,4 +1,2 @@
-import './styles/demo.scss';
+import './styles/index';
 export { DemoComponents } from './depends/demo';
-export { useDemo } from './hooks/useDemo';
-export { sum } from './utils/sum';

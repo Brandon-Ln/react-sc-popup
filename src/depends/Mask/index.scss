@@ -1,0 +1,16 @@
+@import '/src/styles/vars.scss';
+
+$mask-color: var(--bl-mask-color);
+
+.#{$cls-prefix} {
+  &__mask {
+    position: fixed; // position fixed
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    pointer-events: auto;
+    z-index: 1;
+    background-color: $mask-color;
+  }
+}
