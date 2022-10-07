@@ -1,4 +1,4 @@
-import type { CSSStyleProps } from '@/interface';
+import type { CSSStyleProps } from '@/utils/types';
 import type { SpringConfig } from '@react-spring/web';
 
 /**

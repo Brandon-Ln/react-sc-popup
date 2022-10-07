@@ -1,0 +1,39 @@
+@import '/src/styles/vars.scss';
+
+$text-color: var(--bl-text-color);
+$bgc: var(--bl-bgc);
+$radius: 16px;
+$box-shadow: var(--bl-box-shadow);
+
+.#{$cls-prefix}__popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 999;
+  outline: none;
+  color: $text-color;
+
+  &__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $bgc;
+    border-radius: $radius;
+    box-shadow: $box-shadow;
+
+    &--center {
+      width: max-content;
+      height: max-content;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}

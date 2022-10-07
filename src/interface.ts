@@ -1,21 +1,7 @@
 import type { SpringConfig } from '@react-spring/web';
-import type { CSSProperties, HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 
 import type { PotalProps } from './depends/Portal/interface';
-
-/**
- * CSS 样式 props
- */
-export interface CSSStyleProps {
-  /**
-   * 类样式名
-   */
-  className?: string;
-  /**
-   * 内联样式名
-   */
-  style?: CSSProperties;
-}
 
 export type PopupPlacement = 'left' | 'right' | 'bottom' | 'center' | 'top';
 
@@ -42,4 +28,16 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    * @default 'center'
    */
   placement?: PopupPlacement;
+  /**
+   * 是否保留 DOM 元素
+   */
+  preserve?: boolean;
+  /**
+   * 弹出层的宽度
+   */
+  width?: number | string;
+  /**
+   * 弹出层的高度
+   */
+  height?: number | string;
 }

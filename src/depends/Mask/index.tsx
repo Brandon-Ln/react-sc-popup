@@ -6,11 +6,8 @@ import './index.scss';
 
 import type { MaskProps } from './interface';
 
-import { clsPrefix } from '@/utils/constants';
+import { clsPrefix, maskEndOpacity, maskStartOpacity } from '@/utils/constants';
 import { useMounted } from '@/hooks/useMounted';
-
-const startOpacity = 0;
-const endOpacity = 1;
 
 /**
  * @interface MaskProps
@@ -33,7 +30,7 @@ export function Mask(props: MaskProps) {
   const mounted = useMounted(true);
 
   const { opacity } = useSpring({
-    opacity: mounted() && visible ? endOpacity : startOpacity,
+    opacity: mounted() && visible ? maskEndOpacity : maskStartOpacity,
     config: transitionConfig,
     /**
      * preserve 模式下改变 DOM 的可见性
@@ -51,9 +48,9 @@ export function Mask(props: MaskProps) {
   });
 
   const renderTransition = useSpringTransition(visible, {
-    from: { opacity: startOpacity },
-    enter: { opacity: endOpacity },
-    leave: { opacity: startOpacity },
+    from: { opacity: maskStartOpacity },
+    enter: { opacity: maskEndOpacity },
+    leave: { opacity: maskStartOpacity },
     config: transitionConfig,
   });
 
