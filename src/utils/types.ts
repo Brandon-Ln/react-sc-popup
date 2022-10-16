@@ -17,4 +17,4 @@ export interface CSSStyleProps {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Fn<Args extends unknown[] = any[], Res = any> = (...args: Args) => Res;
 
-export type FnWithoutThis<T extends Fn> = (args: Parameters<T>) => ReturnType<T>;
+export type FnWithoutThis<T extends Fn> = (...args: Parameters<T>) => ReturnType<T>;

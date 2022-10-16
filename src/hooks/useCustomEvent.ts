@@ -14,7 +14,7 @@ export function useCustomEvent<T extends Fn>(callback: T): FnWithoutThis<T> {
     callbackRef.current = callback;
   });
 
-  return useCallback((args: Parameters<T>) => {
+  return useCallback((...args: Parameters<T>) => {
     return callbackRef.current.apply(null, args);
   }, []);
 }

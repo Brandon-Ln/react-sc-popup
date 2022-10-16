@@ -1,6 +1,5 @@
 import cls from 'classnames';
 import { useSpring, animated, useTransition as useSpringTransition } from '@react-spring/web';
-import { useRef } from 'react';
 
 import './index.scss';
 
@@ -8,6 +7,7 @@ import type { MaskProps } from './interface';
 
 import { clsPrefix, maskEndOpacity, maskStartOpacity } from '@/utils/constants';
 import { useMounted } from '@/hooks/useMounted';
+import { usePreserveElement } from '@/hooks/usePreserveElement';
 
 /**
  * @interface MaskProps
@@ -24,10 +24,10 @@ export function Mask(props: MaskProps) {
   } = props;
 
   // ref
-  const elRef = useRef<HTMLDivElement>(null);
-
   // hooks
   const mounted = useMounted(true);
+
+  const { show, hide, elRef } = usePreserveElement();
 
   const { opacity } = useSpring({
     opacity: mounted() && visible ? maskEndOpacity : maskStartOpacity,
@@ -36,14 +36,10 @@ export function Mask(props: MaskProps) {
      * preserve 模式下改变 DOM 的可见性
      */
     onStart() {
-      if (visible && preserve && elRef.current) {
-        elRef.current.style.display = '';
-      }
+      preserve && visible && show();
     },
     onRest() {
-      if (!visible && elRef.current && preserve) {
-        elRef.current.style.display = 'none';
-      }
+      preserve && !visible && hide();
     },
   });
 
