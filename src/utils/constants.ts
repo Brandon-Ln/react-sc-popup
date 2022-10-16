@@ -1,5 +1,8 @@
 import type { SpringConfig } from '@react-spring/web';
 
+export const inBrowser =
+  typeof window === 'object' && window && typeof window.document === 'object';
+
 export const clsPrefix = 'bl';
 
 export const maskStartOpacity = 0;

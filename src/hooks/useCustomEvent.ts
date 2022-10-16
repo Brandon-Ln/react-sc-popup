@@ -1,6 +1,14 @@
-import { useCallback, useInsertionEffect, useRef } from 'react';
+import { useCallback, useEffect, useInsertionEffect, useLayoutEffect, useRef } from 'react';
 
 import type { Fn, FnWithoutThis } from '@/utils/types';
+import { inBrowser } from '@/utils/constants';
+
+const updateRefEffect =
+  inBrowser && typeof useInsertionEffect === 'function'
+    ? useInsertionEffect
+    : inBrowser
+    ? useLayoutEffect
+    : useEffect;
 
 /**
  * 使用自定义事件
@@ -10,7 +18,7 @@ import type { Fn, FnWithoutThis } from '@/utils/types';
 export function useCustomEvent<T extends Fn>(callback: T): FnWithoutThis<T> {
   const callbackRef = useRef(callback);
 
-  useInsertionEffect(() => {
+  updateRefEffect(() => {
     callbackRef.current = callback;
   });
 
