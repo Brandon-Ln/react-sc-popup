@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'react-ink-ripple',
+      name: 'react-lite-popup',
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
@@ -27,8 +27,5 @@ export default defineConfig({
         },
       },
     },
-  },
-  test: {
-    environment: 'jsdom',
   },
 });
