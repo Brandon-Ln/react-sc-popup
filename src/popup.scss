@@ -24,7 +24,6 @@ $box-shadow: var(--bl-box-shadow);
     height: 100%;
     z-index: 2;
     background-color: $bgc;
-    border-radius: $radius;
     box-shadow: $box-shadow;
 
     &--center {
@@ -35,6 +34,35 @@ $box-shadow: var(--bl-box-shadow);
       left: 0;
       right: 0;
       margin: auto;
+      border-radius: $radius;
+    }
+
+    &--top {
+      top: 0;
+      left: 0;
+      right: 0;
+      border-radius: 0 0 $radius $radius;
+    }
+
+    &--bottom {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: $radius $radius 0 0;
+    }
+
+    &--left {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 0 $radius $radius 0;
+    }
+
+    &--right {
+      top: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: $radius 0 0 $radius;
     }
   }
 }
