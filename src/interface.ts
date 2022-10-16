@@ -1,5 +1,5 @@
 import type { SpringConfig } from '@react-spring/web';
-import type { HTMLAttributes } from 'react';
+import type { CSSProperties, HTMLAttributes } from 'react';
 
 import type { PotalProps } from './depends/Portal/interface';
 
@@ -40,4 +40,12 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    * 弹出层的高度
    */
   height?: number | string;
+  /**
+   * 遮罩层的样式类
+   */
+  maskClassName?: string;
+  /**
+   * 遮罩层的内联样式
+   */
+  maskStyle?: CSSProperties;
 }

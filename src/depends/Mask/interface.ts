@@ -17,8 +17,4 @@ export interface MaskProps extends CSSStyleProps {
    * 过渡动画配置
    */
   transitionConfig?: SpringConfig;
-  /**
-   * 是否保留 DOM 结构
-   */
-  preserve?: boolean;
 }
