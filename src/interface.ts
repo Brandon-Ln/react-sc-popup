@@ -13,6 +13,7 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
   container?: PotalProps['container'];
   /**
    * 过渡配置
+   * @default config.default
    */
   transitionConfig?: SpringConfig;
   /**
