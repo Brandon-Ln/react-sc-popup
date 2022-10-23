@@ -35,6 +35,7 @@ export function Popup(props: PopupProps) {
     children,
     placement,
     preserve,
+    preventMaskTrigger,
     width,
     height,
     onChange,
@@ -72,7 +73,7 @@ export function Popup(props: PopupProps) {
 
   // handlers
   const handleMaskTrigger = useCustomEvent(() => {
-    onChange && onChange(false);
+    !preventMaskTrigger && onChange && onChange(false);
   });
 
   // elements

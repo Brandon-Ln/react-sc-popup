@@ -1,21 +1,28 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 export function usePreserveToggleElement(toggle: boolean) {
   const elRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef(toggle);
 
+  // effects
+  useEffect(() => {
+    toggleRef.current = toggle;
+  }, [toggle]);
+
+  // handler
   const show = useCallback(() => {
     const element = elRef.current;
-    if (toggle && element && element.style.display === 'none') {
+    if (toggleRef.current && element && element.style.display === 'none') {
       element.style.display = '';
     }
-  }, [toggle]);
+  }, []);
 
   const hide = useCallback(() => {
     const element = elRef.current;
-    if (!toggle && element && !element.style.display) {
+    if (!toggleRef.current && element && !element.style.display) {
       element.style.display = 'none';
     }
-  }, [toggle]);
+  }, []);
 
   return {
     elRef,

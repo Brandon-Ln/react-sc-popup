@@ -22,7 +22,7 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
   /**
    * 弹出层是否可见
    */
-  visible?: boolean;
+  visible: boolean;
   /**
    * 受控值改变时触发的事件函数
    */
@@ -52,6 +52,10 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    * 弹出层的高度
    */
   height?: number | string;
+  /**
+   * 是否阻止点击遮罩层时触发的 onChange 事件
+   */
+  preventMaskTrigger?: boolean;
   /**
    * 遮罩层的样式类
    */
