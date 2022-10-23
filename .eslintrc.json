@@ -20,7 +20,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "func-style": ["warn", "declaration"],
     "no-await-in-loop": "warn",
     "no-duplicate-case": "error",
     "no-use-before-define": "error",
