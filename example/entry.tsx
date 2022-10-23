@@ -8,15 +8,22 @@ import { Right } from './Right';
 import { Left } from './Left';
 import { Bottom } from './Bottom';
 import { Top } from './Top';
+import { DemoBlock } from './DemoBlock';
+import { ControlledAndUnControlled } from './CAU/CAU';
 
 function Examples() {
   return (
     <div className={styleModules.demo}>
-      <Left />
-      <Right />
-      <Top />
-      <Bottom />
-      <Center />
+      <DemoBlock title="1. placement">
+        <Left />
+        <Right />
+        <Top />
+        <Bottom />
+        <Center />
+      </DemoBlock>
+      <DemoBlock title="2. Controll and UnControlled">
+        <ControlledAndUnControlled />
+      </DemoBlock>
     </div>
   );
 }

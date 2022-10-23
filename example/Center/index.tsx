@@ -1,7 +1,6 @@
 import { Fragment, useState } from 'react';
 
 import { Popup } from '@/Popup';
-import { Mask } from '@/depends/Mask';
 
 export function Center() {
   const [visible, setVisible] = useState(false);
