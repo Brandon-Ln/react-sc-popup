@@ -10,6 +10,7 @@ import { Bottom } from './Bottom';
 import { Top } from './Top';
 import { DemoBlock } from './DemoBlock';
 import { ControlledAndUnControlled } from './CAU/CAU';
+import { WithoutMaskExample } from './WM';
 
 function Examples() {
   return (
@@ -23,6 +24,9 @@ function Examples() {
       </DemoBlock>
       <DemoBlock title="2. Controll and UnControlled">
         <ControlledAndUnControlled />
+      </DemoBlock>
+      <DemoBlock title="3. Without Mask">
+        <WithoutMaskExample />
       </DemoBlock>
     </div>
   );

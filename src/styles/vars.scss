@@ -4,7 +4,7 @@ $cls-prefix: 'bl';
   --#{$cls-prefix}-mask-color: rgba(0, 0, 0, 0.6);
   --#{$cls-prefix}-text-color: rgba(0, 0, 0, 0.85);
   --#{$cls-prefix}-bgc: #fafafa;
-  --#{$cls-prefix}-box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
+  --#{$cls-prefix}-box-shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,6 +12,6 @@ $cls-prefix: 'bl';
     --#{$cls-prefix}-mask-color: rgba(0, 0, 0, 0.4);
     --#{$cls-prefix}-text-color: rgba(255, 255, 255, 0.85);
     --#{$cls-prefix}-bgc: #303030;
-    --#{$cls-prefix}-box-shadow: 0 6px 20px rgb(255 255 255 / 8%);
+    --#{$cls-prefix}-box-shadow-color: rgb(255, 255, 255, 0.1);
   }
 }

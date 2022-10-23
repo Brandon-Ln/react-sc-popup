@@ -36,6 +36,7 @@ export function Popup(props: PopupProps) {
     placement,
     preserve,
     preventMaskTrigger,
+    withoutMask,
     width,
     height,
     onChange,
@@ -78,16 +79,17 @@ export function Popup(props: PopupProps) {
 
   // elements
   const renderMask = useMemo(
-    () => (
-      <Mask
-        visible={visible}
-        transitionConfig={transitionConfig}
-        onTrigger={handleMaskTrigger}
-        className={maskClassName}
-        style={maskStyle}
-      />
-    ),
-    [handleMaskTrigger, maskClassName, maskStyle, visible, transitionConfig]
+    () =>
+      !withoutMask && (
+        <Mask
+          visible={visible}
+          transitionConfig={transitionConfig}
+          onTrigger={handleMaskTrigger}
+          className={maskClassName}
+          style={maskStyle}
+        />
+      ),
+    [withoutMask, visible, transitionConfig, handleMaskTrigger, maskClassName, maskStyle]
   );
 
   return (
@@ -102,6 +104,7 @@ export function Popup(props: PopupProps) {
                   `${clsPrefix}__popup__content`,
                   {
                     [`${clsPrefix}__popup__content--${placement}`]: true,
+                    [`${clsPrefix}__popup__content--shadow`]: withoutMask,
                   },
                   userCls
                 )}

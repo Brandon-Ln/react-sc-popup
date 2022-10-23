@@ -57,6 +57,10 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    */
   preventMaskTrigger?: boolean;
   /**
+   * 弹出层唤起不展示遮罩层
+   */
+  withoutMask?: boolean;
+  /**
    * 遮罩层的样式类
    */
   maskClassName?: string;

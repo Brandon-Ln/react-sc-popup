@@ -14,7 +14,14 @@ export function ControlledAndUnControlled() {
         Untrolled Mode
       </button>
       <button onClick={() => setVisible(true)}>Controlled</button>
-      <Popup width={300} height={300} visible={visible} onChange={(v) => setVisible(v)}>
+      <Popup
+        width={300}
+        height={300}
+        visible={visible}
+        onChange={(v) => {
+          setVisible(v);
+        }}
+      >
         Controll Mode
       </Popup>
     </Fragment>

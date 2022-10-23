@@ -3,7 +3,9 @@
 $text-color: var(--bl-text-color);
 $bgc: var(--bl-bgc);
 $radius: 16px;
-$box-shadow: var(--bl-box-shadow);
+$box-shadow-center: 0 8px 14px 2px var(--bl-box-shadow-color);
+$box-shadow-top: 0 8px 14px 0px var(--bl-box-shadow-color);
+$box-shadow-bottom: 0 -8px 14px 0px var(--bl-box-shadow-color);
 
 .#{$cls-prefix}__popup {
   position: fixed;
@@ -24,7 +26,6 @@ $box-shadow: var(--bl-box-shadow);
     height: 100%;
     z-index: 2;
     background-color: $bgc;
-    box-shadow: $box-shadow;
 
     &--center {
       width: max-content;
@@ -63,6 +64,19 @@ $box-shadow: var(--bl-box-shadow);
       bottom: 0;
       right: 0;
       border-radius: $radius 0 0 $radius;
+    }
+
+    &--shadow {
+      touch-action: none;
+      box-shadow: $box-shadow-center;
+
+      &.#{$cls-prefix}__popup__content--top {
+        box-shadow: $box-shadow-top;
+      }
+
+      &.#{$cls-prefix}__popup__content--bottom {
+        box-shadow: $box-shadow-bottom;
+      }
     }
   }
 }
