@@ -5,6 +5,9 @@ import type { PotalProps } from './depends/Portal/interface';
 
 export type PopupPlacement = 'left' | 'right' | 'bottom' | 'center' | 'top';
 
+/**
+ * @interface Popup
+ */
 export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
   /**
    * 挂载节点的容器
@@ -24,6 +27,14 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    * 受控值改变时触发的事件函数
    */
   onChange?: (val: boolean) => void;
+  /**
+   * 即将执行关闭时触发的事件函数
+   */
+  onBeforeClose?: VoidFunction;
+  /**
+   * 已经完成关闭时触发的事件函数
+   */
+  onClosed?: VoidFunction;
   /**
    * 位置
    * @default 'center'
@@ -49,4 +60,24 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    * 遮罩层的内联样式
    */
   maskStyle?: CSSProperties;
+}
+
+/**
+ * @interface Popup
+ */
+export type UncontrolledPopupProps = Omit<PopupProps, 'visible'>;
+
+/**
+ * @interface Popup
+ */
+export interface PopupInstance {
+  /**
+   * 更新 Popup 方法
+   * @param props UncontrolledPopupProps
+   */
+  update(props?: UncontrolledPopupProps): void;
+  /**
+   * 卸载 Popup 方法
+   */
+  unmount: VoidFunction;
 }
