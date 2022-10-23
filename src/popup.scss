@@ -21,11 +21,13 @@ $box-shadow-bottom: 0 -8px 14px 0px var(--bl-box-shadow-color);
   color: $text-color;
 
   &__content {
+    touch-action: none;
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 2;
     background-color: $bgc;
+    will-change: transform, opacity;
 
     &--center {
       width: max-content;

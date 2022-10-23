@@ -61,6 +61,19 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    */
   withoutMask?: boolean;
   /**
+   * 检测判断为触发滑动手势的速度
+   * @default 3
+   */
+  detectSwiperVelocity?: number;
+  /**
+   * 是否禁止滑动手势
+   */
+  disableSwipe?: boolean;
+  /**
+   * 是否禁止拖动手势
+   */
+  disableDrag?: boolean;
+  /**
    * 遮罩层的样式类
    */
   maskClassName?: string;
