@@ -41,6 +41,8 @@ export function Popup(props: PopupProps) {
     detectSwiperVelocity,
     disableDrag,
     disableSwipe,
+    stopPropagation,
+    preventDefault,
     width,
     height,
     onChange,
@@ -50,7 +52,7 @@ export function Popup(props: PopupProps) {
   } = props;
 
   // refs
-  const hasSwipe = useRef(false);
+  const hasSwipeRef = useRef(false);
 
   // hooks
   const { elRef, show, hide } = usePreserveToggleElement(visible || false);
@@ -61,41 +63,56 @@ export function Popup(props: PopupProps) {
   };
 
   // drag gesture
-  const [{ x: dragX, y: dragY }, dragSet] = useSpring(() => ({ x: 0, y: 0 }));
+  const [{ x: dragX, y: dragY }, dragApi] = useSpring(() => ({ x: 0, y: 0 }));
   const dragBinding = useDrag(
-    ({ direction, velocity, pressed, movement: [x, y], last }) => {
+    ({ velocity, pressed, movement: [x, y], last, event }) => {
       if (placement === 'center') {
         return;
       }
+
+      // behaves
+      stopPropagation && event.stopPropagation();
+      preventDefault && event.preventDefault();
+
       const currAxisVelocity =
         placement === 'bottom' || placement === 'top' ? velocity[1] : velocity[0];
+
       const triggerXPositiveDirection =
-        (placement === 'left' && direction[0] === -1) ||
-        (placement === 'right' && direction[0] === 1);
+        (placement === 'left' && x < 0) || (placement === 'right' && x > 0);
       const triggerYPositiveDirection =
-        (placement === 'bottom' && direction[1] === 1) ||
-        (placement === 'top' && direction[1] === -1);
+        (placement === 'bottom' && y > 1) || (placement === 'top' && y < -1);
       const triggerPositiveDirection = triggerXPositiveDirection || triggerYPositiveDirection;
+
+      /**
+       *  判断是否触发滑动手势
+       */
       if (
         currAxisVelocity > Number(detectSwiperVelocity) &&
-        !hasSwipe.current &&
+        !hasSwipeRef.current &&
         triggerPositiveDirection &&
         !disableSwipe
       ) {
-        hasSwipe.current = true;
+        hasSwipeRef.current = true;
         onChange && onChange(false);
+        /**
+         * 还原拖动位置
+         */
       } else if (last && !disableDrag) {
-        dragSet({ x: 0, y: 0 });
+        dragApi.start({ x: 0, y: 0 });
+        /**
+         * 拖动手势
+         */
       } else if (!disableDrag) {
-        dragSet({
+        dragApi.start({
           x: triggerXPositiveDirection && pressed ? x : 0,
           y: triggerYPositiveDirection && pressed ? y : 0,
         });
       }
     },
     {
-      enabled: placement !== 'center' || (disableDrag && disableSwipe),
+      enabled: placement !== 'center' || (!disableDrag && !disableSwipe),
       rubberband: true,
+      filterTaps: true,
     }
   );
 
@@ -119,9 +136,9 @@ export function Popup(props: PopupProps) {
   });
 
   // effects
-  // reset hasSwipe Ref
+  // reset hasSwipeRef Ref
   useEffect(() => {
-    visible && (hasSwipe.current = false);
+    visible && (hasSwipeRef.current = false);
   }, [visible]);
 
   // handlers

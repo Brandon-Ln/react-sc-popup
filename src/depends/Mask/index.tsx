@@ -6,6 +6,7 @@ import './index.scss';
 import type { MaskProps } from './interface';
 
 import { clsPrefix, maskEndOpacity, maskStartOpacity } from '@/utils/constants';
+import { MouseEventHandler } from 'react';
 
 /**
  * @interface MaskProps
@@ -29,9 +30,9 @@ export function Mask(props: MaskProps) {
   });
 
   // handlers
-  function handleClick() {
+  const handleClick: MouseEventHandler = () => {
     onTrigger && onTrigger(!visible);
-  }
+  };
 
   // preserve 模式下始终保留 DOM 元素
   return renderTransition(({ opacity }, visible) =>

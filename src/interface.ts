@@ -74,6 +74,14 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    */
   disableDrag?: boolean;
   /**
+   * 是否阻止绑定的默认事件触发
+   */
+  preventDefault?: boolean;
+  /**
+   * 是否阻止绑定的默认事件冒泡
+   */
+  stopPropagation?: boolean;
+  /**
    * 遮罩层的样式类
    */
   maskClassName?: string;
