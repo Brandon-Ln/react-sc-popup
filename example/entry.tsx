@@ -11,6 +11,9 @@ import { Top } from './Top';
 import { DemoBlock } from './DemoBlock';
 import { ControlledAndUnControlled } from './CAU/CAU';
 import { WithoutMaskExample } from './WM';
+import { NestingDemo } from './Nesting';
+import { BannedGestureDemo } from './BannedGesture';
+import { AdjustSwipeVelocityDemo } from './SwipeVelocity';
 
 function Examples() {
   return (
@@ -22,11 +25,20 @@ function Examples() {
         <Bottom />
         <Center />
       </DemoBlock>
-      <DemoBlock title="2. Controll and UnControlled">
+      <DemoBlock title="2. Controlled and Uncontrolled Mode">
         <ControlledAndUnControlled />
       </DemoBlock>
       <DemoBlock title="3. Without Mask">
         <WithoutMaskExample />
+      </DemoBlock>
+      <DemoBlock title="4. Nesting Scene">
+        <NestingDemo />
+      </DemoBlock>
+      <DemoBlock title="5. adjust detect swiper velocity">
+        <AdjustSwipeVelocityDemo />
+      </DemoBlock>
+      <DemoBlock title="6. Ban gesture">
+        <BannedGestureDemo />
       </DemoBlock>
     </div>
   );

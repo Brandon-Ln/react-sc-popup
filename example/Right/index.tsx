@@ -12,6 +12,7 @@ export function Right() {
     <Fragment>
       <button onClick={handleClick}>Right</button>
       <Popup
+        preserve
         placement="right"
         visible={visible}
         width={200}
