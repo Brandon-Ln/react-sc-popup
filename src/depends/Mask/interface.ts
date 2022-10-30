@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react';
 import type { CSSStyleProps } from '@/utils/types';
 import type { SpringConfig } from '@react-spring/web';
 
@@ -12,7 +13,7 @@ export interface MaskProps extends CSSStyleProps {
   /**
    * 触发遮罩层事件
    */
-  onTrigger?: (val: boolean) => void;
+  onTrigger: (val: boolean, e: MouseEvent<Element>) => void;
   /**
    * 过渡动画配置
    */

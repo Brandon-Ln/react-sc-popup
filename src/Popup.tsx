@@ -20,6 +20,7 @@ import { usePreserveToggleElement } from './hooks/usePreserveToggleElement';
 import { useCustomEvent } from './hooks/useCustomEvent';
 import { getTransitionValueConfigByPlacement } from './utils/config';
 import { getAllInstanceSugars, mountSugar, unmountAllSugars } from './sugar';
+import { MaskProps } from './depends/Mask/interface';
 
 /**
  * @interface PopupProps
@@ -38,7 +39,7 @@ export function Popup(props: PopupProps) {
     preserve,
     preventMaskTrigger,
     withoutMask,
-    detectSwiperVelocity,
+    detectSwipeVelocity,
     disableDrag,
     disableSwipe,
     stopPropagation,
@@ -87,7 +88,7 @@ export function Popup(props: PopupProps) {
        *  判断是否触发滑动手势
        */
       if (
-        currAxisVelocity > Number(detectSwiperVelocity) &&
+        currAxisVelocity > Number(detectSwipeVelocity) &&
         !hasSwipeRef.current &&
         triggerPositiveDirection &&
         !disableSwipe
@@ -142,8 +143,10 @@ export function Popup(props: PopupProps) {
   }, [visible]);
 
   // handlers
-  const handleMaskTrigger = useCustomEvent(() => {
-    !preventMaskTrigger && onChange && onChange(false);
+  const handleMaskTrigger = useCustomEvent<MaskProps['onTrigger']>((value, e) => {
+    preventDefault && e.preventDefault();
+    stopPropagation && e.stopPropagation();
+    !preventMaskTrigger && onChange && onChange(value);
   });
 
   // elements
@@ -200,7 +203,7 @@ export function Popup(props: PopupProps) {
 
 Popup.defaultProps = {
   placement: 'center',
-  detectSwiperVelocity: 3,
+  detectSwipeVelocity: 3,
 };
 
 // imperative sugar

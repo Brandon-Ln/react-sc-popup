@@ -30,8 +30,8 @@ export function Mask(props: MaskProps) {
   });
 
   // handlers
-  const handleClick: MouseEventHandler = () => {
-    onTrigger && onTrigger(!visible);
+  const handleClick: MouseEventHandler = (e) => {
+    onTrigger(!visible, e);
   };
 
   // preserve 模式下始终保留 DOM 元素

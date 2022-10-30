@@ -64,7 +64,7 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    * 检测判断为触发滑动手势的速度
    * @default 3
    */
-  detectSwiperVelocity?: number;
+  detectSwipeVelocity?: number;
   /**
    * 是否禁止滑动手势
    */
