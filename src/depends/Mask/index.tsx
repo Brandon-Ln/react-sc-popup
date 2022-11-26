@@ -14,8 +14,8 @@ import { MouseEventHandler } from 'react';
 export function Mask(props: MaskProps) {
   const {
     className: userCls,
-    visible,
     style: userStyle,
+    visible,
     transitionConfig,
     onTrigger,
     ...restProps

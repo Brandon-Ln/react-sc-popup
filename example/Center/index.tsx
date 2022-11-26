@@ -5,9 +5,9 @@ import { Popup } from '@/Popup';
 export function Center() {
   const [visible, setVisible] = useState(false);
 
-  function handleClick() {
+  const handleClick = () => {
     setVisible(true);
-  }
+  };
 
   return (
     <Fragment>
@@ -18,7 +18,9 @@ export function Center() {
         visible={visible}
         width={200}
         height={200}
-        onChange={(v) => setVisible(v)}
+        onChange={(v) => {
+          setVisible(v);
+        }}
       >
         Hello world
       </Popup>

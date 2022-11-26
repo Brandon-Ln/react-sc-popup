@@ -16,11 +16,10 @@ import {
 import { Portal } from './depends/Portal';
 import { Mask } from './depends/Mask';
 import { calculateSizeByPlacement } from './utils/layout';
-import { usePreserveToggleElement } from './hooks/usePreserveToggleElement';
 import { useCustomEvent } from './hooks/useCustomEvent';
-import { getTransitionValueConfigByPlacement } from './utils/config';
 import { getAllInstanceSugars, mountSugar, unmountAllSugars } from './sugar';
 import { MaskProps } from './depends/Mask/interface';
+import { useTransformStringByPlacement } from './hooks/useTransformString';
 
 /**
  * @interface PopupProps
@@ -35,11 +34,11 @@ export function Popup(props: PopupProps) {
     transitionConfig,
     visible,
     children,
-    placement,
+    placement = 'center',
     preserve,
     preventMaskTrigger,
     withoutMask,
-    detectSwipeVelocity,
+    detectSwipeVelocity = 3,
     disableDrag,
     disableSwipe,
     stopPropagation,
@@ -54,9 +53,6 @@ export function Popup(props: PopupProps) {
 
   // refs
   const hasSwipeRef = useRef(false);
-
-  // hooks
-  const { elRef, show, hide } = usePreserveToggleElement(visible || false);
 
   const springConfig: SpringConfig = {
     ...(placement === 'center' ? bounceDefaultTransitionConfig : {}),
@@ -117,17 +113,37 @@ export function Popup(props: PopupProps) {
     }
   );
 
+  const { from, leave, enter } = useTransformStringByPlacement(placement);
+
   const renderTransition = useTransition(visible, {
-    ...getTransitionValueConfigByPlacement(placement!),
+    from: { transform: from, display: '' },
+    enter() {
+      return async (next) => {
+        await next({
+          display: '',
+        });
+        return next({
+          transform: enter,
+        });
+      };
+    },
+    leave() {
+      return async (next) => {
+        await next({
+          transform: leave,
+        });
+        return next({
+          display: preserve ? 'none' : '',
+        });
+      };
+    },
     config: springConfig,
     /* 根据 preserve 字段决定渲染过渡方式 */
     expires: !preserve,
     onStart() {
       !visible && onBeforeClose && onBeforeClose();
-      show();
     },
     onRest() {
-      hide();
       !visible && onClosed && onClosed();
     },
   });
@@ -166,10 +182,11 @@ export function Popup(props: PopupProps) {
 
   return (
     <Portal container={container}>
-      {renderTransition(({ transform }, visible) => {
+      {renderTransition(({ display, transform }, visible) => {
+        const inlineStyles = calculateSizeByPlacement(placement, width, height);
         return (
           visible && (
-            <div className={cls(`${clsPrefix}__popup`)} ref={elRef}>
+            <animated.div className={cls(`${clsPrefix}__popup`)} style={{ display }}>
               {renderMask}
               <animated.div
                 className={cls(
@@ -182,29 +199,24 @@ export function Popup(props: PopupProps) {
                 )}
                 style={{
                   ...userStyle,
-                  ...calculateSizeByPlacement(placement, width, height),
+                  ...inlineStyles,
+                  transform,
                   opacity,
                   x: dragX,
                   y: dragY,
-                  transform,
                 }}
                 {...dragBinding()}
                 {...restProps}
               >
                 {children}
               </animated.div>
-            </div>
+            </animated.div>
           )
         );
       })}
     </Portal>
   );
 }
-
-Popup.defaultProps = {
-  placement: 'center',
-  detectSwipeVelocity: 3,
-};
 
 // imperative sugar
 Popup.mount = mountSugar;
