@@ -6,7 +6,6 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "declaration": true,
     "outDir": "dist",
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -22,6 +21,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "./**/*"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
