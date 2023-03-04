@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
 
 import styleModules from './entry.module.scss';
@@ -14,6 +14,7 @@ import { WithoutMaskExample } from './WM';
 import { NestingDemo } from './Nesting';
 import { BannedGestureDemo } from './BannedGesture';
 import { AdjustSwipeVelocityDemo } from './SwipeVelocity';
+import { PreventMaskClickDemo } from './PreventMaskClick';
 
 function Examples() {
   return (
@@ -40,11 +41,14 @@ function Examples() {
       <DemoBlock title="6. Ban gesture">
         <BannedGestureDemo />
       </DemoBlock>
+      <DemoBlock title="7. Prevent mask click trigges toggle">
+        <PreventMaskClickDemo />
+      </DemoBlock>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Examples />
   </StrictMode>

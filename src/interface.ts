@@ -20,7 +20,7 @@ export interface PopupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'
    */
   transitionConfig?: SpringConfig;
   /**
-   * 弹出层是否可见
+   * 受控值，弹出层是否可见
    */
   visible: boolean;
   /**
