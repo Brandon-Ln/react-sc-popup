@@ -1,12 +1,12 @@
 import cls from 'classnames';
 import { animated, useTransition as useSpringTransition } from '@react-spring/web';
+import type { MouseEventHandler } from 'react';
 
 import './index.scss';
 
 import type { MaskProps } from './interface';
 
 import { clsPrefix, maskEndOpacity, maskStartOpacity } from '@/utils/constants';
-import { MouseEventHandler } from 'react';
 
 /**
  * @interface MaskProps
