@@ -1,4 +1,4 @@
-import { DemoBlockProps } from './interface';
+import type { DemoBlockProps } from './interface';
 
 export function DemoBlock(props: DemoBlockProps) {
   const { title, children } = props;

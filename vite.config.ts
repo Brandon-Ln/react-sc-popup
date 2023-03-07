@@ -16,15 +16,13 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'react-lite-popup',
       fileName: (format) => `index.${format}.js`,
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', '@react-spring/web', 'classnames', '@use-gesture/react'],
       // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
+        globals: {},
       },
     },
   },
