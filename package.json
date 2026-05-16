@@ -47,7 +47,7 @@
     "commit": "cz",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "prepare": "pnpm i && husky install",
+    "prepare": "husky install",
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && vite build && tsc --emitDeclarationOnly",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
