@@ -1,4 +1,4 @@
-@import '/src/styles/vars.scss';
+@use '/src/styles/vars' as *;
 
 $mask-color: var(--bl-mask-color);
 

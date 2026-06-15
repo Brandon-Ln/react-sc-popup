@@ -1,4 +1,4 @@
-@import '/src/styles/vars.scss';
+@use '/src/styles/vars' as *;
 
 $text-color: var(--bl-text-color);
 $bgc: var(--bl-bgc);
